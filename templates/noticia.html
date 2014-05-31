@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title%}
+    {{noticia.titulo}}
+{% endblock%}
+
+{% block content %}
+    <h1>{{noticia.titulo}}</h1>
+    {% if noticia.imagem %}
+        <img src="{{ url_for('media', filename=noticia.imagem) }}" width="300" />
+    {% endif %}
+    <hr />
+    <p>
+        {{noticia.texto}}
+    </p>
+{% endblock %}

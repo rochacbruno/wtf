@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}
+    Notícia {{id_nova_noticia}} inserida com sucesso
+{% endblock %}
+
+{% block content %}
+    <h1>Notícia {{id_nova_noticia}} inserida com sucesso!</h1>
+    <a href="{{url_for('noticia', noticia_id=id_nova_noticia)}}"> Ler Notícia </a><br />
+    <a href="{{url_for('cadastro')}}"> Cadastrar nova notícia </a>
+{% endblock %}

@@ -5,7 +5,7 @@
 <body>
    <img src="{{url_for('static', filename='generic_logo.gif')}}">
    <nav>
-       <a href="{{url_for('index')}}">HOME</a> | <a href="{{url_for('cadastro')}}">CADASTRO</a>
+       <a href="{{url_for('noticias.index')}}">HOME</a> | <a href="{{url_for('noticias.cadastro')}}">CADASTRO</a>
    </nav>
    <hr />
    {% block content %} {% endblock %}

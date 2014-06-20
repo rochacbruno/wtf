@@ -1,8 +1,11 @@
+import sys
 from werkzeug.wsgi import DispatcherMiddleware
-from news_app import create_app as create_news_app
-from another_app import create_app as create_another_app
+from wtf.news_app import create_app as create_news_app
+from wtf.another_app import create_app as create_another_app
 
-app = create_news_app(config_filename='settings.py')
+mode = sys.argv[1] if len(sys.argv) > 1 else 'development'
+
+app = create_news_app(mode=mode)
 another_app_config = {
     "SECRET_KEY": "HELLO_FLASK",
     "AUTHOR_NAME": "Bruno Rocha @rochacbruno"
@@ -16,4 +19,4 @@ app.wsgi_app = DispatcherMiddleware(
     }
 )
 
-app.run(debug=True, use_reloader=True)
+app.run(**app.config.get_namespace('RUN_'))

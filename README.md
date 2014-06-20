@@ -12,6 +12,7 @@ mkvirtualenv wtf_env
 
 git clone https://github.com/rochacbruno/wtf
 cd wtf
+git checkout almost_perfect
 pip install -r requirements.txt
 ```
 

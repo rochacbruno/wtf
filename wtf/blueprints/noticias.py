@@ -4,13 +4,14 @@ from werkzeug import secure_filename
 from flask import (
     Blueprint, request, current_app, send_from_directory, render_template
 )
-from db import noticias
+from ..db import get_table
 
 noticias_blueprint = Blueprint('noticias', __name__)
 
 
 @noticias_blueprint.route("/noticias/cadastro", methods=["GET", "POST"])
 def cadastro():
+    noticias = get_table('noticias')
     if request.method == "POST":
 
         dados_do_formulario = request.form.to_dict()
@@ -31,6 +32,7 @@ def cadastro():
 
 @noticias_blueprint.route("/")
 def index():
+    noticias = get_table('noticias')
     todas_as_noticias = noticias.all()
     return render_template('index.html',
                            noticias=todas_as_noticias,
@@ -39,6 +41,7 @@ def index():
 
 @noticias_blueprint.route("/noticia/<int:noticia_id>")
 def noticia(noticia_id):
+    noticias = get_table('noticias')
     noticia = noticias.find_one(id=noticia_id)
     return render_template('noticia.html', noticia=noticia)
 

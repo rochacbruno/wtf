@@ -1,3 +1,5 @@
-from news_app import create_app
-app = create_app(config_filename='settings.py')
-app.run(debug=True, use_reloader=True)
+import sys
+from wtf.news_app import create_app
+mode = sys.argv[1] if len(sys.argv) > 1 else 'development'
+app = create_app(mode=mode)
+app.run(**app.config.get_namespace('RUN_'))

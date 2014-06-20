@@ -1,7 +1,7 @@
 import os
 import sys
 import unittest
-from news_app import create_app
+from wtf.news_app import create_app
 from flask import request
 
 sys.path.append(os.path.abspath(__name__))

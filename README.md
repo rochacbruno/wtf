@@ -16,6 +16,13 @@ git checkout almost_perfect
 pip install -r requirements.txt
 ```
 
+Para rodar os testes
+```bash
+make test
+ou
+nosetests tests/
+```
+
 para rodar a versão simples use
 
 ```bash
@@ -28,4 +35,3 @@ Para rodar a versão que une 2 apps com o DispatcherMiddleware use o **multiple_
 ```bash
 python multiple_run.py
 ```
-

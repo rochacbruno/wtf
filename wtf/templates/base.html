@@ -1,13 +1,29 @@
-<html>
-<head>
-    <title>{% block title %} {{title or "Notícias"}} {% endblock %}</title>
-</head>
-<body>
-   <img src="{{url_for('static', filename='generic_logo.gif')}}">
-   <nav>
-       <a href="{{url_for('noticias.index')}}">HOME</a> | <a href="{{url_for('noticias.cadastro')}}">CADASTRO</a>
-   </nav>
-   <hr />
-   {% block content %} {% endblock %}
-</body>
-</html>
+{%- extends "bootstrap/base.html" %}
+{% import "bootstrap/utils.html" as utils %}
+{% block title %} {{title or "Notícias"}} {% endblock %}
+{% block navbar -%}
+    <nav class="navbar navbar-default">
+       <a class="navbar-brand" href="#"><img src="{{url_for('static', filename='generic_logo.gif')}}" style="height:30px;"></a>
+       <ul class="nav navbar-nav">
+         <li><a href="{{url_for('noticias.index')}}">HOME</a> </li>
+         <li><a href="{{url_for('noticias.cadastro')}}">CADASTRO</a></li>
+       </ul>
+    </nav>
+{%- endblock navbar %}
+
+{% block content %}
+ <div class="container">
+  {%- with messages = get_flashed_messages(with_categories=True) %}
+  {%- if messages %}
+    <div class="row">
+      <div class="col-md-12">
+        {{utils.flashed_messages(messages)}}
+      </div>
+    </div>
+  {%- endif %}
+  {%- endwith %}
+    <div class="jumbotron">
+      {% block news %}
+      {% endblock %}
+    </div>
+{%- endblock content%}

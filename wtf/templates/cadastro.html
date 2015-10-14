@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block content %}
+{% block news %}
 <form method="post" action="{{ url_for('noticias.cadastro') }}" enctype="multipart/form-data">
    <label>Titulo:<br />
         <input type="text" name="titulo" id="titulo" />

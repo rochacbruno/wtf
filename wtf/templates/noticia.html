@@ -3,13 +3,13 @@
     {{noticia.titulo}}
 {% endblock%}
 
-{% block content %}
+{% block news %}
     <h1>{{noticia.titulo}}</h1>
     {% if noticia.imagem %}
         <img src="{{ url_for('noticias.media', filename=noticia.imagem) }}" width="300" />
     {% endif %}
     <hr />
     <p>
-        {{noticia.texto}}
+        {{noticia.texto|safe}}
     </p>
 {% endblock %}

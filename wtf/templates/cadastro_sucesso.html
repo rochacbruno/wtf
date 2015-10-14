@@ -3,7 +3,7 @@
     Notícia {{id_nova_noticia}} inserida com sucesso
 {% endblock %}
 
-{% block content %}
+{% block news %}
     <h1>Notícia {{id_nova_noticia}} inserida com sucesso!</h1>
     <a href="{{url_for('noticias.noticia', noticia_id=id_nova_noticia)}}"> Ler Notícia </a><br />
     <a href="{{url_for('noticias.cadastro')}}"> Cadastrar nova notícia </a>

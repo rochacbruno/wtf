@@ -5,11 +5,13 @@ from flask import (
     Blueprint, request, current_app, send_from_directory, render_template
 )
 from ..models import Noticia
+from flask_security import login_required
 
 noticias_blueprint = Blueprint('noticias', __name__)
 
 
 @noticias_blueprint.route("/noticias/cadastro", methods=["GET", "POST"])
+@login_required
 def cadastro():
     if request.method == "POST":
         dados_do_formulario = request.form.to_dict()

@@ -1,8 +1,8 @@
-News App da parte 2 do artigo What the Flask - Introdução ao desenvolvimento web com Python e Flask
+News App da parte 3 do artigo What the Flask - Introdução ao desenvolvimento web com Python e Flask
 
 Para mais informações acesse http://pythonclub.com.br/tag/what-the-flask.html
 
-Esta versão é a versão final da parte 2 "Estrutura de aplicaçṍes Flask" e implementa configurações por instance_path e multiple apps com o DispatcherMiddleware.
+Esta versão é a versão final da parte 3 "What the Flask? Pt-3 Plug & Use - extensões essenciais para iniciar seu projeto" e implementa algumas das principais extensoes do Flask.
 
 tendo o virtualenvwrapper instalado faça o seguinte.
 
@@ -12,8 +12,8 @@ mkvirtualenv wtf_env
 
 git clone https://github.com/rochacbruno/wtf
 cd wtf
-git checkout almost_perfect
-pip install -r requirements.txt
+git checkout extended
+pip install -r requirements.txt --upgrade
 ```
 
 Para rodar os testes
@@ -23,15 +23,8 @@ ou
 nosetests tests/
 ```
 
-para rodar a versão simples use
+para rodar
 
 ```bash
 python run.py
-# ou se quiser alterar a instancia de configuraçṍes
-python run.py production
-```
-Para rodar a versão que une 2 apps com o DispatcherMiddleware use o **multiple_run**
-
-```bash
-python multiple_run.py
 ```

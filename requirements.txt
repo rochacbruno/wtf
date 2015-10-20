@@ -4,3 +4,4 @@ nose
 Flask-Bootstrap
 Flask-Security
 Flask-Login==0.2.11
+Flask-Admin

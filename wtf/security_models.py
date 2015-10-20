@@ -31,9 +31,6 @@ class User(db.Document, UserMixin):
     last_login_ip = db.StringField(max_length=255)
     current_login_ip = db.StringField(max_length=255)
     login_count = db.IntField()
-    username = db.StringField(max_length=50, required=False, unique=True)
-    remember_token = db.StringField(max_length=255)
-    authentication_token = db.StringField(max_length=255)
 
     @classmethod
     def createuser(cls, name, email, password,

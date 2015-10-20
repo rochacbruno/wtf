@@ -5,6 +5,7 @@ from flask import (
     Blueprint, request, current_app, send_from_directory, render_template
 )
 from ..models import Noticia
+from ..cache import cache
 from flask_security import login_required
 
 noticias_blueprint = Blueprint('noticias', __name__)
@@ -28,6 +29,7 @@ def cadastro():
 
 
 @noticias_blueprint.route("/")
+@cache.cached(timeout=300)
 def index():
     todas_as_noticias = Noticia.objects.all()
     return render_template('index.html',
@@ -37,7 +39,12 @@ def index():
 
 @noticias_blueprint.route("/noticia/<noticia_id>")
 def noticia(noticia_id):
-    noticia = Noticia.objects.get(id=noticia_id)
+    noticia_cacheada = cache.get(noticia_id)
+    if noticia_cacheada:
+        noticia = noticia_cacheada
+    else:
+        noticia = Noticia.objects.get(id=noticia_id)
+        cache.set(noticia_id, noticia, timeout=300)
     return render_template('noticia.html', noticia=noticia)
 
 

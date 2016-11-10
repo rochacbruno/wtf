@@ -16,7 +16,10 @@ admin = Admin(name='Noticias', template_mode='bootstrap3',
 class SafeModelView(ModelView):
 
     def is_accessible(self):
-        if not current_user.is_authenticated():
+        if current_user.is_anonymous:
+            return False
+
+        if not current_user.is_active or not current_user.is_authenticated:
             return False
         # if not current_user.has_role('admin'):
         #     return False
@@ -28,7 +31,7 @@ class SafeModelView(ModelView):
         view is not accessible.
         """
         if not self.is_accessible():
-            if current_user.is_authenticated():
+            if current_user.is_authenticated and not current_user.is_anonymous:
                 abort(403)  # denied
             else:
                 return redirect(url_for('security.login', next=request.url))

@@ -1,9 +1,9 @@
-https://github.com/mitsuhiko/flask/tarball/master
-https://github.com/MongoEngine/flask-mongoengine/tarball/master
+flask
+flask-mongoengine
 nose
 Flask-Bootstrap
 Flask-Security
-Flask-Login==0.2.11
+#Flask-Login==0.2.11
 Flask-Admin
 flask-debugtoolbar
 flask-cache

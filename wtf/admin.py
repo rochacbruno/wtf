@@ -6,6 +6,7 @@ from flask_admin import Admin
 
 from .models import Noticia
 from .security_models import User, Role
+from .cache import cache
 
 
 admin = Admin(name='Noticias', template_mode='bootstrap3',
@@ -35,6 +36,12 @@ class SafeModelView(ModelView):
                 abort(403)  # denied
             else:
                 return redirect(url_for('security.login', next=request.url))
+
+    def after_model_change(self, form, model, is_created):
+        cache.clear()
+
+    def after_model_delete(self, model):
+        cache.clear()
 
 
 class UserModelView(SafeModelView):

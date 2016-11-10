@@ -13,4 +13,4 @@ class BasicTestCase(unittest.TestCase):
 
     def test_request_args(self):
         with self.app.test_request_context('/?name=BrunoRocha'):
-             self.assertEqual(request.args.get('name'), 'BrunoRocha')
+            self.assertEqual(request.args.get('name'), 'BrunoRocha')

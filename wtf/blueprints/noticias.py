@@ -16,9 +16,8 @@ noticias_blueprint = Blueprint('noticias', __name__)
 def cadastro():
     if request.method == "POST":
         dados_do_formulario = request.form.to_dict()
-        if not all(
-           [dados_do_formulario['titulo'], dados_do_formulario['texto']]
-        ):
+        if not all([dados_do_formulario['titulo'],
+                    dados_do_formulario['texto']]):
             return render_template('error.html', error=u"Campos obrigatórios")
         imagem = request.files.get('imagem')
         if imagem:

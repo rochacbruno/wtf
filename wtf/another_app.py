@@ -7,7 +7,6 @@ def create_app(config):
     if config:
         app.config.update(**config)
 
-
     @app.route("/")
     def index():
         return "<br>".join([

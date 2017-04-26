@@ -7,3 +7,4 @@ Flask-Security
 Flask-Admin
 flask-debugtoolbar
 flask-cache
+flask_simple_sitemap
